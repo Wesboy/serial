@@ -174,9 +174,14 @@ int run(int argc, char **argv)
   sscanf(argv[2], "%lu", &baud);
 #endif
 
-  if (argv[3] == "-t")
+  if (argc >= 4)
   {
-    bTest_fun = 1;
+    string test(argv[3]);
+    if(test == "-t")
+    {
+      bTest_fun = 1;
+      cout << "example test mode!!!" << endl;
+    }
   }
 
   // port, baudrate, timeout in milliseconds
@@ -190,8 +195,8 @@ int run(int argc, char **argv)
 
 
   string test_string;
-  if (argc == 4) {
-    test_string = argv[3];
+  if (argc == 5) {
+    test_string = argv[4];
   } else {
     test_string = "Testing.";
   }
